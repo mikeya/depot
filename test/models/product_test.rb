@@ -23,7 +23,7 @@ class ProductTest < ActiveSupport::TestCase
     product = Product.new(title:        products(:ruby).title,
                           description:  "yyy",
                           price:        1,
-                          image_url:    image_url)
+                          image_url:     "zzz.jpg")
 
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
@@ -34,11 +34,11 @@ class ProductTest < ActiveSupport::TestCase
                           description:  "yyy",
                           image_url:    "zzz.jpg")
     product.price = -1
-    assert.product.invalid?
+    assert product.invalid?
     assert_equal ["must be greater than or equal to 0.01"],
                  product.errors[:price]
     product.price = 0
-    assert.product.invalid?
+    assert product.invalid?
     assert_equal ["must be greater than or equal to 0.01"],
                  product.errors[:price]
 
